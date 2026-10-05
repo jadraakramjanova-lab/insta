@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaGold — Instagram Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <span>Insta</span><b>Gold</b>
+        </div>
+
+        <nav>
+            <button class="nav-item active" data-section="home">
+                <span>⌂</span> Bosh sahifa
+            </button>
+
+            <button class="nav-item" id="searchBtn">
+                <span>⌕</span> Qidiruv
+            </button>
+
+            <button class="nav-item" id="exploreBtn">
+                <span>◈</span> Kashf etish
+            </button>
+
+            <button class="nav-item" id="messageBtn">
+                <span>✉</span> Xabarlar
+            </button>
+
+            <button class="nav-item">
+                <span>♡</span> Bildirishnomalar
+            </button>
+
+            <button class="nav-item" id="createBtn">
+                <span>＋</span> Yaratish
+            </button>
+
+            <button class="nav-item" id="profileBtn">
+                <span>◉</span> Profil
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button class="nav-item">
+                <span>☰</span> Ko‘proq
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOP MOBILE BAR -->
+        <header class="mobile-header">
+            <div class="logo">
+                <span>Insta</span><b>Gold</b>
+            </div>
+
+            <div class="mobile-actions">
+                <button id="mobileSearch">⌕</button>
+                <button>♡</button>
+            </div>
+        </header>
+
+        <!-- STORIES -->
+        <section class="stories-section">
+            <div class="section-title">
+                <h2>Hikoyalar</h2>
+                <button id="allStories">Barchasini ko‘rish</button>
+            </div>
+
+            <div class="stories" id="stories"></div>
+        </section>
+
+        <!-- FEED -->
+        <section class="feed" id="feed"></section>
+
+    </main>
+
+    <!-- RIGHT PANEL -->
+    <aside class="right-panel">
+
+        <div class="profile-mini">
+            <div class="avatar large">AJ</div>
+
+            <div>
+                <strong>jadra_dev</strong>
+                <span>Jadra Akramjanova</span>
+            </div>
+
+            <button>Almashtirish</button>
+        </div>
+
+        <div class="suggestion-header">
+            <span>Siz uchun tavsiyalar</span>
+            <button>Barchasi</button>
+        </div>
+
+        <div id="suggestions"></div>
+
+        <footer>
+            <span>Maxfiylik</span>
+            <span>Shartlar</span>
+            <span>Yordam</span>
+            <span>Haqida</span>
+            <span>© 2026 InstaGold</span>
+        </footer>
+
+    </aside>
+
+
+    <!-- SEARCH PANEL -->
+    <div class="overlay" id="searchOverlay">
+        <div class="search-panel">
+            <button class="close" id="closeSearch">×</button>
+
+            <h2>Qidiruv</h2>
+
+            <div class="search-box">
+                <span>⌕</span>
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Qidirish..."
+                >
+            </div>
+
+            <div id="searchResults"></div>
+        </div>
+    </div>
+
+
+    <!-- CREATE MODAL -->
+    <div class="overlay" id="createModal">
+        <div class="modal">
+            <button class="close" id="closeCreate">×</button>
+
+            <h2>Yangi post yaratish</h2>
+
+            <div class="upload-area">
+                <div class="upload-icon">＋</div>
+                <p>Post ma’lumotlarini kiriting</p>
+            </div>
+
+            <input
+                type="text"
+                id="newPostImage"
+                placeholder="Rasm URL manzili"
+            >
+
+            <textarea
+                id="newPostCaption"
+                placeholder="Post izohi..."
+            ></textarea>
+
+            <button class="gold-btn" id="publishPost">
+                Post joylash
+            </button>
+        </div>
+    </div>
+
+
+    <!-- STORY MODAL -->
+    <div class="overlay story-overlay" id="storyModal">
+        <div class="story-viewer">
+            <button class="close" id="closeStory">×</button>
+
+            <div class="story-progress">
+                <span></span>
+            </div>
+
+            <div class="story-header">
+                <div class="avatar" id="storyAvatar">AJ</div>
+                <strong id="storyName">Foydalanuvchi</strong>
+            </div>
+
+            <div class="story-content">
+                <img id="storyImage" src="" alt="Hikoya">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PROFILE MODAL -->
+    <div class="overlay" id="profileModal">
+        <div class="profile-modal">
+            <button class="close" id="closeProfile">×</button>
+
+            <div class="profile-top">
+                <div class="avatar profile-avatar">AJ</div>
+
+                <div class="profile-info">
+                    <div class="profile-name">
+                        <h2>jadra_dev</h2>
+                        <button>Profilni tahrirlash</button>
+                    </div>
+
+                    <div class="stats">
+                        <span><b id="postCount">12</b> post</span>
+                        <span><b>1.8K</b> kuzatuvchi</span>
+                        <span><b>346</b> kuzatuv</span>
+                    </div>
+
+                    <p>
+                        <b>Jadra Akramjanova</b><br>
+                        Full Stack Developer 💻<br>
+                        IT • Dizayn • Texnologiya ✨
+                    </p>
+                </div>
+            </div>
+
+            <div class="profile-grid" id="profileGrid"></div>
+        </div>
+    </div>
+
+
+    <!-- MESSAGE MODAL -->
+    <div class="overlay" id="messageModal">
+        <div class="modal message-modal">
+            <button class="close" id="closeMessage">×</button>
+
+            <h2>Xabarlar</h2>
+
+            <div class="chat-list">
+                <div class="chat">
+                    <div class="avatar">SA</div>
+                    <div>
+                        <strong>sardor_dev</strong>
+                        <p>Salom! Loyihani ko‘rdingmi?</p>
+                    </div>
+                </div>
+
+                <div class="chat">
+                    <div class="avatar">MA</div>
+                    <div>
+                        <strong>madina_ui</strong>
+                        <p>Yangi dizayn juda zo‘r 🔥</p>
+                    </div>
+                </div>
+
+                <div class="chat">
+                    <div class="avatar">AK</div>
+                    <div>
+                        <strong>akmal_code</strong>
+                        <p>Bugun uchrashamizmi?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
